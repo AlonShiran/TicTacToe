@@ -3,10 +3,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
-    var player = "p1";
+    private var player = "p1"
+    lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,12 +39,12 @@ class MainActivity : AppCompatActivity() {
         b9.setOnClickListener {
             buttonClick(b9)
         }
-        restartgame.setOnClickListener() {
+        restartgame.setOnClickListener {
             restartGame()
         }
     }
 
-    fun buttonClick(btn: Button) {
+    private fun buttonClick(btn: Button) {
         if (btn.text == "") {
             if (player == "p1") {
                 player = "p2"
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         win()
     }
 
-    fun win() {
+    private fun win() {
         if ((b1.text == "O" && b2.text == "O" && b3.text == "O")
             || (b4.text == "O" && b5.text == "O" && b6.text == "O")
             || (b7.text == "O" && b8.text == "O" && b9.text == "O")
@@ -89,11 +90,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun toast(msg: String) {
+    private fun toast(msg: String) {
         Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun restartGame() {
+    private fun restartGame() {
         b1.text = ""
         b2.text = ""
         b3.text = ""
@@ -115,7 +116,7 @@ class MainActivity : AppCompatActivity() {
         txtResult.text = ""
     }
 
-    fun disableButtons() {
+    private fun disableButtons() {
         b1.isEnabled = false
         b2.isEnabled = false
         b3.isEnabled = false
